@@ -1,0 +1,30 @@
+.app
+  width: 100vw
+  height: 100vh
+  position: relative
+  display: flex
+  flex-direction: column
+  background-color: #000
+  justify-content: space-between
+  overflow: hidden
+  &::before,
+  &::after
+    content: ""
+    position: absolute
+    width: 30%
+    height: 10%
+    right: 2%
+    bottom: 12%
+    padding: 20% 50px 0 30%
+    font-size: 2.5rem
+    transition: all .3s
+    transform: rotateX(60deg) rotateY(15deg) rotateZ(-45deg)
+    box-shadow: 0 0 500px #7b7c7a
+    color: #fff
+  &::after
+    content: "Just fill all form fields"
+    background-color: #80e473
+    bottom: 20%
+  &::before
+    content: "... and confirm it!"
+    background-color: #417e4e

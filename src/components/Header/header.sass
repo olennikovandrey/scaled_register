@@ -1,0 +1,25 @@
+.header
+  position: sticky
+  display: flex
+  align-items: center
+  top: 0
+  width: 100%
+  height: 7vh
+  padding: 0 10vw
+  background-color: #1b1b1b
+  box-shadow: 0 10px 20px #18ff00
+  color: #fff
+  z-index: 10
+  &__content
+    margin-left: 5vw
+    font-size: 2em
+    &::before
+      content: ""
+      position: absolute
+      top: 2px
+      left: 10vw
+      width: 100px
+      height: 7vh
+      background-size: 100%
+      background: url("../../assets/images/header/favicon.svg")
+      background-repeat: no-repeat
