@@ -21,6 +21,23 @@
     background-color: #fff
     &:focus
       outline: 3px solid #0075ff
+  & input[type="date"]
+    position: relative
+    content: ""
+    &::-webkit-calendar-picker-indicator
+      position: absolute
+      top: 0
+      left: 0
+      right: 0
+      bottom: 0
+      width: auto
+      height: auto
+      color: transparent
+      background: transparent
+      cursor: pointer
+  & input[type="radio"]
+    &:disabled
+      outline: none
   & input:disabled
     cursor: not-allowed
     background-color: #c5c5c5
@@ -38,26 +55,30 @@
   padding: 20px
   background-color: rgba(119, 119, 119, 0.3)
   transition: .2s
-  &[data-state=true]
+  &[data-hidden=true]
     opacity: 0.4
     cursor: not-allowed
-  &__title, .form-section-title
+
+  &__title
     margin-bottom: 20px
     font-size: 1.5em
     font-weight: bold
     color: #fff
+
   &__buttons-wrapper
     width: 100%
     display: flex
     justify-content: space-around
+
   &__input-label
     display: inline-block
     margin-bottom: 20px
     width: 100%
     font-size: 1.4em
     color: #fff
-    & b
-      color: red
+    &[disabled]
+    cursor: not-allowed
+
   & button
     width: 49%
     height: 40px

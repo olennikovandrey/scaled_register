@@ -2,10 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const Select = (props) => {
-  const { stateFunc, data, labelText, preClassName, isPersonalInfoDisabled } = props;
+  const { stateFunc, data, labelText, preClassName, isHidden } = props;
 
   const selectChanger = (stateFunc) => {
-    if (isPersonalInfoDisabled) {
+    if (isHidden) {
       return;
     }
     const selectSingle = document.querySelector(`.${ preClassName }__wrapper`);
@@ -32,13 +32,14 @@ const Select = (props) => {
   };
 
   return (
-    <div className={`${ preClassName }`}>
-      <label className={`${ preClassName }__select-name`}>
+    <div className={`${ preClassName }`} >
+      <label className={`${ preClassName }__select-name`} disabled={ isHidden }>
         { labelText } <b>*</b>
-        <div className={`${ preClassName }__wrapper`} data-state="" disabled={ isPersonalInfoDisabled ? true : false }>
+        <div className={`${ preClassName }__wrapper`} data-state="" disabled={ isHidden }>
           <div
             className={`${ preClassName }__title`}
             onClick={ () => selectChanger(stateFunc) }
+            disabled={ isHidden }
           >
           </div>
           <div className={`${ preClassName }__content`}>
@@ -48,6 +49,7 @@ const Select = (props) => {
                 <label
                   htmlFor={ item }
                   className={`${ preClassName }__label`}
+                  disabled={ isHidden }
                 >
                   { item }
                 </label>
@@ -65,7 +67,7 @@ Select.propTypes = {
   data: PropTypes.array,
   labelText: PropTypes.string,
   preClassName: PropTypes.string,
-  isPersonalInfoDisabled: PropTypes.bool,
+  isHidden: PropTypes.bool,
 };
 
 export default Select;

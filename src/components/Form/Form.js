@@ -1,7 +1,5 @@
-//import { FormInput } from "../../styled-components/styled-components";
 import SignUpInfo from "./SignUpInfo";
 import PersonalInfo from "./PersonalInfo";
-import schema from "../../validation/schema.json";
 import React, {useState} from "react";
 
 const Form = () => {
@@ -15,18 +13,11 @@ const Form = () => {
   const [ocean, setOcean] = useState("");
   const [hobby, setHobby] = useState("");
 
-  const [isPersonalInfoDisabled, setIsPersonalInfoDisabled] = useState(true);
-
   const dateFormatChanger = (value) => {
     const date = new Date(value);
     setBirthday(date.toLocaleString().slice(0, 10));
   };
 
-
-  //const Ajv = require("ajv");
-  //const ajv = new Ajv({allErrors: true});
-
-  //const validate = ajv.compile(schema);
   const userData = {
     firstName: firstName,
     lastName: lastName,
@@ -38,9 +29,8 @@ const Form = () => {
     hobby: hobby,
     sex: sex
   };
-  //const valid = validate(userData);
-  //if (!valid) console.log(validate.errors);
-  //console.log(valid);
+
+
 
   return (
     <>
@@ -52,7 +42,6 @@ const Form = () => {
           setPhone={ setPhone }
           setEmail={ setEmail }
           setPassword={ setPassword }
-          setIsPersonalInfoDisabled={ setIsPersonalInfoDisabled }
         />
         <PersonalInfo
           firstName={ firstName }
@@ -64,7 +53,7 @@ const Form = () => {
           setBirthday={ dateFormatChanger }
           setOcean={ setOcean }
           setHobby={ setHobby }
-          isPersonalInfoDisabled={ isPersonalInfoDisabled }
+          userData={ userData }
         />
       </div>
     </>

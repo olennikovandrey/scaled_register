@@ -36,7 +36,7 @@
       background: url("../../assets/images/fingerprint/fingerPrint_03.png")
       background-size: 100%
       background-repeat: no-repeat
-      animation: finger 3s ease-in-out infinite
+      animation: finger 1s ease-in-out infinite
     &::after
       content: ""
       position: absolute
@@ -47,7 +47,7 @@
       background: #18ff00
       border-radius: 8px
       filter: drop-shadow(0 0 20px #18ff00) drop-shadow(0 0 60px #18ff00)
-      animation: finger_line 3s ease-in-out infinite
+      animation: finger_line 1s ease-in-out infinite
 
   & h3
     font-family: consolas
@@ -56,18 +56,18 @@
     margin-top: 20px
     color: #18ff00
     filter: drop-shadow(0 0 20px #18ff00) drop-shadow(0 0 60px #18ff00)
-    animation: text 1s steps(1) infinite
+    animation: text .5s steps(1) infinite
 
   @keyframes finger
-    0%, 100%
+    0%
       height: 0%
-    50%
+    100%
       height: 100%
 
   @keyframes finger_line
-    0%, 100%
+    0%
       top: 0%
-    50%
+    100%
       top: 100%
 
   @keyframes text

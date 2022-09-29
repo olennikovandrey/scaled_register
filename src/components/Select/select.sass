@@ -2,19 +2,8 @@ label
   width: 100%
   font-size: 1.4em
   color: #fff
-  & b
-    color: red
-  & .ocean-select__label,
-  & .hobby-select__label
-    display: flex
-    align-items: center
-    width: 100%
-    max-height: 0
-    padding: 0 10px
-    font-size: 1.1em
-    transition: .2s ease-out
-    cursor: pointer
-    color: #5c5c5c
+  &[disabled]
+    cursor: not-allowed
 
 .ocean-select,
 .hobby-select
@@ -69,6 +58,9 @@ label
     cursor: pointer
     z-index: 2
     border: none
+    &[disabled]
+      cursor: not-allowed
+      background-color: #c5c5c5
     &:hover
       border-color: #eee
     &::before,
@@ -113,6 +105,18 @@ label
       background-color: #f9f9fd
 
   &__label
+    display: flex
+    align-items: center
+    width: 100%
+    max-height: 0
+    padding: 0 10px
+    font-size: 1.1em
+    transition: .2s ease-out
+    cursor: pointer
+    color: #5c5c5c
+    &[disabled]
+      cursor: not-allowed
+      background-color: #c5c5c5
     &::after
       position: absolute
       top: -40px
