@@ -1,14 +1,24 @@
 .pointers-wrapper
-  width: 45%
+  width: 100%
   margin: 0 auto
   display: flex
   align-items: center
   justify-content: center
+  @media only screen and (max-width: 768px)
+    margin-top: 20px
 
 .item
   color: #fff
   font-size: 2em
   transition: .3s
+  @media only screen and (max-width: 1024px)
+    font-size: 1.4em
+  @media only screen and (max-width: 968px)
+    font-size: 1.2em
+  @media only screen and (max-width: 425px)
+    font-size: 1em
+  @media only screen and (max-width: 375px)
+    font-size: .9em
   &:nth-child(1)
     color: #18ff00
   &[data-state="active"]

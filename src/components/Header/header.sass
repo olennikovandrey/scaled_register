@@ -1,25 +1,51 @@
-.header
-  position: sticky
+.header, .footer
+  position: fixed
   display: flex
   align-items: center
-  top: 0
-  width: 100%
+  width: 100vw
   height: 7vh
-  padding: 0 10vw
+  padding: 0 10vw 0 15vw
   background-color: #1b1b1b
-  box-shadow: 0 10px 20px #18ff00
   color: #fff
-  z-index: 10
+  z-index: 20
+  @media only screen and (max-width: 1024px)
+    padding: 0 20px 0 17vw
+  @media only screen and (max-width: 425px)
+    padding: 0 3vw 0 19vw
+  @media only screen and (max-width: 320px)
+    padding: 0 3vw 0 22vw
   &__content
-    margin-left: 5vw
     font-size: 2em
+    @media only screen and (max-width: 1024px)
+      font-size: 1.4em
+    @media only screen and (max-width: 768px)
+      font-size: 1.2em
+    @media only screen and (max-width: 425px)
+      font-size: 1em
     &::before
       content: ""
       position: absolute
       top: 2px
       left: 10vw
       width: 100px
-      height: 7vh
+      height: 55px
       background-size: 100%
-      background: url("../../assets/images/header/favicon.svg")
+      background: url("../../assets/images/header/favicon55px.svg")
       background-repeat: no-repeat
+      @media only screen and (max-width: 768px)
+        left: 7vw
+      @media only screen and (max-width: 425px)
+        left: 3vw
+      @media only screen and (max-width: 375px)
+        height: 40px
+        background: url("../../assets/images/header/favicon40px.svg")
+        background-repeat: no-repeat
+
+.header
+  top: 0
+  box-shadow: 0 10px 20px #18ff00
+
+.footer
+  bottom: 0
+  justify-content: flex-end
+  box-shadow: 0 -10px 20px #18ff00

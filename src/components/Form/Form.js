@@ -1,6 +1,10 @@
 import SignUpInfo from "./SignUpInfo";
 import PersonalInfo from "./PersonalInfo";
-import React, {useState} from "react";
+import schema from "../../validation/schema.json";
+import { SHOW_MODAL, SHOW_CHECKING, PUT_USER_DATA } from "../../store/actions/action-types";
+import React, { useState } from "react";
+import Ajv from "ajv";
+import { useDispatch } from "react-redux";
 
 const Form = () => {
   const [phone, setPhone] = useState("");
@@ -12,6 +16,8 @@ const Form = () => {
   const [birthday, setBirthday] = useState("");
   const [ocean, setOcean] = useState("");
   const [hobby, setHobby] = useState("");
+
+  const dispatch = useDispatch();
 
   const dateFormatChanger = (value) => {
     const date = new Date(value);
@@ -31,6 +37,26 @@ const Form = () => {
   };
 
 
+  const completeHandler = (event) => {
+    event.preventDefault();
+    dispatch({ type: SHOW_CHECKING});
+    dispatch({ type: PUT_USER_DATA, payload: userData});
+    validateHandler();
+    setTimeout(() => {
+      dispatch({ type: SHOW_MODAL});
+    }, 1000);
+  };
+
+  const validateHandler = () => {
+    const ajv = new Ajv();
+    const validate = ajv.compile(schema);
+
+    if (validate(userData)) {
+      console.log("puka");
+    } else {
+      console.log("piska");
+    }
+  };
 
   return (
     <>
@@ -53,7 +79,7 @@ const Form = () => {
           setBirthday={ dateFormatChanger }
           setOcean={ setOcean }
           setHobby={ setHobby }
-          userData={ userData }
+          completeHandler={ completeHandler }
         />
       </div>
     </>

@@ -1,9 +1,19 @@
-import { SHOW_PERSONAL_INFO, SHOW_SIGN_UP_INFO, SHOW_CHECKING } from "./actions/action-types";
+import { SHOW_PERSONAL_INFO,
+  SHOW_SIGN_UP_INFO,
+  SHOW_CHECKING,
+  SHOW_MODAL,
+  PUT_USER_DATA,
+  TRY_AGAIN } from "./actions/action-types";
 
 export const initState = {
   isPersonalInfoHidden: true,
   isSignUpInfoHidden: false,
-  isCheckingActive: false
+  isCheckingActive: false,
+  isSignUpInfoReady: false,
+  isPersonalInfoReady: false,
+  isFinished: false,
+  isModalActive: false,
+  userData: {}
 };
 
 const reducer = (state = initState, action) => {
@@ -13,7 +23,8 @@ const reducer = (state = initState, action) => {
       ...state,
       isPersonalInfoHidden: false,
       isSignUpInfoHidden: true,
-      isCheckingActive: false
+      isCheckingActive: false,
+      isSignUpInfoReady: true
     };
   }
 
@@ -22,7 +33,9 @@ const reducer = (state = initState, action) => {
       ...state,
       isPersonalInfoHidden: true,
       isSignUpInfoHidden: false,
-      isCheckingActive: false
+      isCheckingActive: false,
+      isPersonalInfoReady: false,
+      isSignUpInfoReady: false,
     };
   }
 
@@ -30,6 +43,37 @@ const reducer = (state = initState, action) => {
     return {
       ...state,
       isCheckingActive: true
+    };
+  }
+
+  case SHOW_MODAL: {
+    return {
+      ...state,
+      isCheckingActive: false,
+      isModalActive: true,
+      isSignUpInfoReady: true,
+      isPersonalInfoReady: true,
+      isFinished: true,
+    };
+  }
+
+  case PUT_USER_DATA: {
+    return {
+      ...state,
+      userData: action.payload
+    };
+  }
+
+  case TRY_AGAIN: {
+    return {
+      isPersonalInfoHidden: true,
+      isSignUpInfoHidden: false,
+      isCheckingActive: false,
+      isSignUpInfoReady: false,
+      isPersonalInfoReady: false,
+      isFinished: false,
+      isModalActive: false,
+      userData: {}
     };
   }
 

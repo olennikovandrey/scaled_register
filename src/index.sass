@@ -5,6 +5,7 @@
 @import url("../src/components/Form/form.sass")
 @import url("../src/components/Select/select.sass")
 @import url("../src/components/Footer/footer.sass")
+@import url("../src/components/ResultModal/result-modal.sass")
 
 *
   margin: 0
@@ -18,4 +19,28 @@ html
   margin-right: calc(-1 * (100vw - 100%))
 
 b
-    color: red
+  color: red
+
+button
+  width: 49%
+  height: 40px
+  font-size: 1.5em
+  font-weight: bold
+  cursor: pointer
+  border-radius: 8px
+  border: none
+  color: #000
+  background-color: #fff
+  transition: .3s
+  &:hover
+    background-color: #417e4e
+    box-shadow: 0 0 30px #7b7c7a
+    color: #fff
+  &:disabled
+    background-color: #773333
+    color: #fff
+    cursor: not-allowed
+    &:hover
+      box-shadow: 0 0 30px #8b0808
+  @media only screen and (max-width: 425px)
+    font-size: 1.2em

@@ -4,10 +4,3 @@ export const oceans = [
   "Indian",
   "Arctic"
 ];
-
-export const hobby = [
-  "Sport",
-  "Beauty",
-  "IT",
-  "Pets"
-];

@@ -1,42 +1,27 @@
-.footer
-  position: sticky
-  display: flex
-  align-items: center
-  justify-content: space-between
-  width: 100%
-  height: 7vh
-  padding: 0 10vw
-  background-color: #1b1b1b
-  box-shadow: 0 -10px 20px #18ff00
-  color: #fff
-  z-index: 10
-
-  &__content
-    &::before
-      content: ""
-      position: absolute
-      top: 2px
-      left: 10vw
-      width: 100px
-      height: 7vh
-      background-size: 100%
-      background: url("../../assets/images/footer/favicon.svg")
-      background-repeat: no-repeat
-
-  &__socials
-    width: 100px
+.footer__socials
+    width: 230px
     height: 60px
     padding: 5px 0
     display: flex
     align-items: center
     justify-content: flex-end
+    @media only screen and (max-width: 320px)
+      width: 180px
     & div
+      width: auto
       height: 100%
-      margin-right: 10px
+      margin-right: 3%
       display: flex
-      align-items: center
+      align-items: flex-end
+      justify-content: flex-end
+      &:last-child
+        margin: 0
       & img, a
         height: 100%
         transition: .2s
+        @media only screen and (max-width: 375px)
+          height: 90%
+        @media only screen and (max-width: 320px)
+          height: 85%
         &:hover
           scale: 1.1
