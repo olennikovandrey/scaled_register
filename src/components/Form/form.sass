@@ -32,6 +32,9 @@
     background-color: #fff
     &:focus
       outline: 3px solid #0075ff
+
+    @media only screen and (max-width: 1366px)
+      height: 30px
     @media only screen and (max-width: 425px)
       font-size: 1em
   & input[type="date"]
@@ -55,6 +58,7 @@
 
 .sign-up, .personal-info
   width: 49%
+  max-height: 800px
   height: 100%
   display: flex
   flex-direction: column
@@ -73,14 +77,18 @@
     margin-bottom: 25px
   @media only screen and (max-width: 425px)
     margin-bottom: 3vw
+    padding: 10px
 
   &__title
     margin-bottom: 20px
     font-size: 1.5em
     font-weight: bold
     color: #fff
-    @media only screen and (max-width: 425px)
+    @media only screen and (max-width: 1366px)
+      margin-bottom: 10px
       font-size: 1.3em
+    @media only screen and (max-width: 425px)
+      font-size: 1.2em
 
   &__buttons-wrapper
     width: 100%
@@ -89,30 +97,35 @@
 
   &__input-label
     display: inline-block
-    margin-bottom: 20px
     width: 100%
     font-size: 1.4em
     color: #fff
+    @media only screen and (max-width: 1366px)
+      font-size: 1.2em
+      margin-bottom: 15px
     @media only screen and (max-width: 1024px)
       margin-bottom: 10px
     @media only screen and (max-width: 425px)
-      font-size: 1.2em
+      font-size: 1.1em
 
 .sign-up
   &__input-label
+    margin-bottom: 20px
     &:disabled
       cursor: not-allowed
-  &__input-label
-    @media only screen and (max-width: 1024px)
-      margin-bottom: 20px
 
 .personal-info
+  & input[type="text"],
+  & input[type="date"]
+    @media only screen and (max-width: 1366px)
+      height: 25px
   & button
     &:first-of-type
       font-size: 1em
       @media only screen and (max-width: 425px)
         font-size: .9em
   &__input-label
+    margin-bottom: 10px
     &:disabled
       cursor: not-allowed
 
@@ -125,6 +138,10 @@
   justify-content: center
   border-radius: 6px
   border: 2px solid #fff
+  @media only screen and (max-width: 1366px)
+    margin-bottom: 10px
+  @media only screen and (max-width: 425px)
+    height: 55px
   & legend
     width: 25%
     text-align: center
@@ -132,31 +149,13 @@
     color: #fff
     @media only screen and (max-width: 425px)
       width: 30%
-      font-size: 1.2em
+      font-size: 1.1em
     @media only screen and (max-width: 375px)
       width: 40%
   & label
     font-size: 1.4rem
     @media only screen and (max-width: 425px)
-      font-size: 1.2em
-
-.hobby
-  height: 85px
-  @media only screen and (max-width: 320px)
-    height: 80px
-  & label
-    display: block
-    width: auto
-    margin-right: 5%
-    text-align: center
-    cursor: pointer
-    @media only screen and (max-width: 425px)
-      font-size: 1em
-  & input[type="checkbox"]
-    margin-right: 1%
-    cursor: pointer
-    &:disabled
-      cursor: not-allowed
+      font-size: 1.1em
 
 .sex-item
   width: auto
@@ -175,3 +174,25 @@
     margin-right: 10px
     &:disabled
       outline: none
+
+.hobby
+  height: auto
+  @media only screen and (max-width: 1024px)
+    margin-bottom: 20px
+  @media only screen and (max-width: 320px)
+    height: 80px
+  & label
+    display: block
+    width: 22%
+    margin-right: 10px
+    text-align: center
+    cursor: pointer
+    @media only screen and (max-width: 425px)
+      font-size: 1em
+    @media only screen and (max-width: 600px)
+      width: auto
+  & input[type="checkbox"]
+    margin-right: 10px
+    cursor: pointer
+    &:disabled
+      cursor: not-allowed

@@ -1,27 +1,20 @@
 .footer__socials
     width: 230px
-    height: 60px
+    height: 100%
     padding: 5px 0
     display: flex
     align-items: center
     justify-content: flex-end
     @media only screen and (max-width: 320px)
       width: 180px
-    & div
+    &:last-child
+        margin: 0
+    & img, a
       width: auto
       height: 100%
       margin-right: 3%
-      display: flex
-      align-items: flex-end
-      justify-content: flex-end
+      transition: .2s
+      &:hover
+        scale: 1.1
       &:last-child
-        margin: 0
-      & img, a
-        height: 100%
-        transition: .2s
-        @media only screen and (max-width: 375px)
-          height: 90%
-        @media only screen and (max-width: 320px)
-          height: 85%
-        &:hover
-          scale: 1.1
+        margin-right: 0

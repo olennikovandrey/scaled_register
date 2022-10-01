@@ -1,12 +1,12 @@
 /* eslint-disable no-debugger */
-import { SHOW_PERSONAL_INFO, SHOW_CHECKING } from "../../store/actions/action-types";
+import { SHOW_PERSONAL_INFO } from "../../store/actions/action-types";
 import React from "react";
 import PropTypes from "prop-types";
 import IMask from "imask";
 import { useDispatch, useSelector } from "react-redux";
 
 const SignUpInfo = (props) => {
-  const { email, password, setPhone, setEmail, setPassword } = props;
+  const { email, password, setPhone, setEmail, setPassword, setConfirmPassword } = props;
   const isHidden = useSelector(state => state.isSignUpInfoHidden);
   const dispatch = useDispatch();
 
@@ -22,10 +22,7 @@ const SignUpInfo = (props) => {
 
   const signUpSubmit = (event) => {
     event.preventDefault();
-    dispatch({ type: SHOW_CHECKING });
-    setTimeout(() => {
-      dispatch({ type: SHOW_PERSONAL_INFO });
-    }, 1000);
+    dispatch({ type: SHOW_PERSONAL_INFO });
     document.getElementById("personalInfo").scrollIntoView({block: "center", behavior: "smooth"});
   };
 
@@ -68,6 +65,7 @@ const SignUpInfo = (props) => {
           <input
             placeholder="Repeat your password"
             type="password"
+            onChange={ (event) => setConfirmPassword(event.target.value) }
             disabled={ isHidden }
           />
         </label>
@@ -84,5 +82,6 @@ SignUpInfo.propTypes = {
   password: PropTypes.string,
   setPhone: PropTypes.func,
   setEmail: PropTypes.func,
-  setPassword:PropTypes.func
+  setPassword: PropTypes.func,
+  setConfirmPassword: PropTypes.func
 };

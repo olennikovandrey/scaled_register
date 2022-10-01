@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import SignUpInfo from "./SignUpInfo";
 import PersonalInfo from "./PersonalInfo";
 import schema from "../../validation/schema.json";
@@ -10,12 +11,13 @@ const Form = () => {
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState(false);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [sex, setSex] = useState("");
   const [birthday, setBirthday] = useState("");
   const [ocean, setOcean] = useState("");
-  const [hobby, setHobby] = useState("");
+  const [hobby, setHobby] = useState([]);
 
   const dispatch = useDispatch();
 
@@ -36,25 +38,24 @@ const Form = () => {
     sex: sex
   };
 
-
   const completeHandler = (event) => {
     event.preventDefault();
     dispatch({ type: SHOW_CHECKING});
     dispatch({ type: PUT_USER_DATA, payload: userData});
-    validateHandler();
     setTimeout(() => {
       dispatch({ type: SHOW_MODAL});
     }, 1000);
   };
 
-  const validateHandler = () => {
-    const ajv = new Ajv();
+  const validateHandler = (event) => {
+    event.preventDefault();
+    const ajv = new Ajv({allErrors: true});
     const validate = ajv.compile(schema);
 
-    if (validate(userData)) {
-      console.log("puka");
+    if (validate(userData) && password === confirmPassword) {
+      completeHandler(event);
     } else {
-      console.log("piska");
+      console.log(validate.errors);
     }
   };
 
@@ -65,9 +66,11 @@ const Form = () => {
           phone={ phone }
           email={ email }
           password={ password }
+          confirmPassword={ confirmPassword }
           setPhone={ setPhone }
           setEmail={ setEmail }
           setPassword={ setPassword }
+          setConfirmPassword={ setConfirmPassword }
         />
         <PersonalInfo
           firstName={ firstName }
@@ -79,7 +82,7 @@ const Form = () => {
           setBirthday={ dateFormatChanger }
           setOcean={ setOcean }
           setHobby={ setHobby }
-          completeHandler={ completeHandler }
+          validateHandler={ validateHandler }
         />
       </div>
     </>

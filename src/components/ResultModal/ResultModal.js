@@ -6,10 +6,6 @@ const ResultModal = () => {
   const userData = useSelector(state => state.userData);
   const dispatch = useDispatch();
 
-  const clearAll = () => {
-    dispatch({ type: TRY_AGAIN });
-  };
-
   return (
     <section className="modal">
       <div>
@@ -58,7 +54,7 @@ const ResultModal = () => {
           </div>
         </div>
       </div>
-      <button onClick={ () => clearAll() }>Try again</button>
+      <button onClick={ () => dispatch({ type: TRY_AGAIN }) }>Try again</button>
     </section>
   );
 };

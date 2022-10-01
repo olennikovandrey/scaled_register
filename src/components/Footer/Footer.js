@@ -1,17 +1,16 @@
 import { contactData } from "./footerData";
+import logo from "../../assets/images/header/favicon55px.svg";
 import React from "react";
 
 const Footer = () => {
   return (
     <footer className="footer">
-      <div className="footer__content"></div>
+      <img src={ logo } alt="logo" className="footer__logo" />
       <div className="footer__socials">
         { contactData.map(item =>
-          <div key={ item.link }>
-            <a href={ item.link } target="_blank" rel="noreferrer">
-              <img src={ item.icon } alt={ item.source } />
-            </a>
-          </div>
+          <a href={ item.link } target="_blank" key={ item.link } rel="noreferrer">
+            <img src={ item.icon } alt={ item.source } />
+          </a>
         ) }
       </div>
     </footer>

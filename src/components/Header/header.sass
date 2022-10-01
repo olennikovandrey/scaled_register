@@ -4,42 +4,28 @@
   align-items: center
   width: 100vw
   height: 7vh
-  padding: 0 10vw 0 15vw
+  padding: 0 10vw
   background-color: #1b1b1b
   color: #fff
   z-index: 20
   @media only screen and (max-width: 1024px)
-    padding: 0 20px 0 17vw
+    padding: 0 20px
   @media only screen and (max-width: 425px)
-    padding: 0 3vw 0 19vw
-  @media only screen and (max-width: 320px)
-    padding: 0 3vw 0 22vw
+    padding: 0 3vw
   &__content
     font-size: 2em
+    @media only screen and (max-width: 1366px)
+      font-size: 1.4em
     @media only screen and (max-width: 1024px)
       font-size: 1.4em
     @media only screen and (max-width: 768px)
       font-size: 1.2em
     @media only screen and (max-width: 425px)
       font-size: 1em
-    &::before
-      content: ""
-      position: absolute
-      top: 2px
-      left: 10vw
-      width: 100px
-      height: 55px
-      background-size: 100%
-      background: url("../../assets/images/header/favicon55px.svg")
-      background-repeat: no-repeat
-      @media only screen and (max-width: 768px)
-        left: 7vw
-      @media only screen and (max-width: 425px)
-        left: 3vw
-      @media only screen and (max-width: 375px)
-        height: 40px
-        background: url("../../assets/images/header/favicon40px.svg")
-        background-repeat: no-repeat
+  &__logo
+    width: auto
+    height: 90%
+    margin-right: 15px
 
 .header
   top: 0
@@ -47,5 +33,5 @@
 
 .footer
   bottom: 0
-  justify-content: flex-end
+  justify-content: space-between
   box-shadow: 0 -10px 20px #18ff00

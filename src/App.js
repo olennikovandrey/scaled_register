@@ -10,6 +10,7 @@ import { useSelector } from "react-redux";
 function App() {
   const isCheckingActive = useSelector(state => state.isCheckingActive);
   const isModalActive = useSelector(state => state.isModalActive);
+  const isFinished = useSelector(state => state.isFinished);
 
   return (
     <div
@@ -18,7 +19,7 @@ function App() {
       data-before={ isModalActive ? "Wasn't it?" : "... and confirm it!" }
     >
       <Header />
-      <Breadcrumbs />
+      { !isFinished && <Breadcrumbs /> }
       { isCheckingActive && <FingerPrint /> }
       { !isModalActive ? <Form /> : null }
       { isModalActive ? <ResultModal /> : null }
