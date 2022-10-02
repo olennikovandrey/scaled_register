@@ -7,7 +7,7 @@ import PropTypes from "prop-types";
 import { useSelector, useDispatch } from "react-redux";
 
 const PersonalInfo = (props) => {
-  const { firstName, lastName, setFirstName, setLastName, setSex, setBirthday, setOcean, setHobby, validateHandler } = props;
+  const { firstName, lastName, setFirstName, setLastName, setSex, setBirthday, setOcean, setHobby, completeHandler } = props;
   const state = useSelector(state => state);
   const isHidden = state.isPersonalInfoHidden;
   const dispatch = useDispatch();
@@ -16,7 +16,7 @@ const PersonalInfo = (props) => {
     event.preventDefault();
     dispatch({ type: SHOW_SIGN_UP_INFO });
     setTimeout(() => {
-      document.getElementById("pol").scrollIntoView({block: "center", behavior: "smooth"});
+      document.getElementById("signUpInfo").scrollIntoView({block: "center", behavior: "smooth"});
     },50);
   };
 
@@ -28,8 +28,9 @@ const PersonalInfo = (props) => {
           First Name <b>*</b>
           <input
             className="field"
+            id="firstName"
             type="text"
-            placeholder="Use latin letter only"
+            placeholder="Use latin letters only"
             value={ firstName }
             onChange={ (event) => setFirstName(event.target.value) }
             disabled={ isHidden }
@@ -39,18 +40,18 @@ const PersonalInfo = (props) => {
           Last Name <b>*</b>
           <input
             className="field"
+            id="lastName"
             type="text"
-            placeholder="Use latin letter only"
+            placeholder="Use latin letters only"
             value={ lastName }
             onChange={ (event) => setLastName(event.target.value) }
             disabled={ isHidden }
           />
         </label>
-        <fieldset className="sex field" disabled={ isHidden } >
+        <fieldset className="sex field" disabled={ isHidden } id="sex">
           <legend>Sex <b>*</b></legend>
           <div className="sex-item" disabled={ isHidden }>
             <input
-
               type="radio"
               id="male"
               name="sex"
@@ -77,6 +78,7 @@ const PersonalInfo = (props) => {
           Birthday <b>*</b>
           <input
             className="field"
+            id="birthday"
             type="date"
             onChange={ (event) => setBirthday(event.target.value) }
             disabled={ isHidden }
@@ -94,7 +96,7 @@ const PersonalInfo = (props) => {
         </label>
         <div className="personal-info__buttons-wrapper">
           <button onClick={ (event) => changeInfo(event) } disabled={ isHidden }>Change Sign Up Information</button>
-          <button onClick={ (event) => validateHandler(event) } disabled={ isHidden }>Complete</button>
+          <button onClick={ (event) => completeHandler(event) } disabled={ isHidden }>Complete</button>
         </div>
       </form>
     </>
@@ -112,5 +114,5 @@ PersonalInfo.propTypes = {
   setBirthday: PropTypes.func,
   setOcean: PropTypes.func,
   setHobby: PropTypes.func,
-  validateHandler: PropTypes.func
+  completeHandler: PropTypes.func
 };

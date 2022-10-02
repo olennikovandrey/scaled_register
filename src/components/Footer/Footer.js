@@ -1,5 +1,5 @@
 import { contactData } from "./footerData";
-import logo from "../../assets/images/header/favicon55px.svg";
+import logo from "../../assets/images/header/favicon.svg";
 import React from "react";
 
 const Footer = () => {

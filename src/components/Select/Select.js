@@ -35,7 +35,7 @@ const Select = (props) => {
     <div className={`${ preClassName }`} >
       <label className={`${ preClassName }__select-name`} disabled={ isHidden }>
         { labelText } <b>*</b>
-        <div className={`${ preClassName }__wrapper`} data-state="" disabled={ isHidden }>
+        <div className={`${ preClassName }__wrapper`} data-state="" disabled={ isHidden } id="ocean">
           <div
             className={`${ preClassName }__title`}
             onClick={ () => selectChanger(stateFunc) }

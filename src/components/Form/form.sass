@@ -32,6 +32,9 @@
     background-color: #fff
     &:focus
       outline: 3px solid #0075ff
+    &[data-valid=invalid]
+      outline: 1px solid #ff0000
+      box-shadow: 0 0 8px #ff0000
 
     @media only screen and (max-width: 1366px)
       height: 30px
@@ -138,10 +141,14 @@
   justify-content: center
   border-radius: 6px
   border: 2px solid #fff
+  transition: .2s
   @media only screen and (max-width: 1366px)
     margin-bottom: 10px
   @media only screen and (max-width: 425px)
     height: 55px
+  &[data-valid=invalid]
+      border: 2px solid #ff0000
+      box-shadow: 0 0 8px #ff0000
   & legend
     width: 25%
     text-align: center
@@ -196,3 +203,7 @@
     cursor: pointer
     &:disabled
       cursor: not-allowed
+
+.invalid-massage
+  color: red
+  font-size: 12px

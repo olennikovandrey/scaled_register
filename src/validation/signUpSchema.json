@@ -1,0 +1,19 @@
+{
+  "type": "object",
+  "properties": {
+    "mobilePhone": {
+      "type": "string",
+      "pattern": "^\\+375\\d{9}$"
+    },
+    "password": {
+      "type": "string",
+      "minLength": 8,
+      "maxLength": 20
+    },
+    "email": {
+      "type": "string",
+      "pattern": "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$"
+    }
+  },
+  "required": ["mobilePhone", "password", "email"]
+}

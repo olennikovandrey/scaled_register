@@ -6,7 +6,7 @@ import skype from "../../assets/images/footer/skype.png";
 export const contactData = [
   {
     source: "github.com",
-    link: "https://github.com/olennikovandrey",
+    link: "https://github.com/olennikovandrey/scaled_register",
     icon: github
   },
   {

@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import SignUpInfo from "./SignUpInfo";
 import PersonalInfo from "./PersonalInfo";
 import schema from "../../validation/schema.json";
@@ -11,7 +10,6 @@ const Form = () => {
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState(false);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [sex, setSex] = useState("");
@@ -40,22 +38,30 @@ const Form = () => {
 
   const completeHandler = (event) => {
     event.preventDefault();
-    dispatch({ type: SHOW_CHECKING});
-    dispatch({ type: PUT_USER_DATA, payload: userData});
-    setTimeout(() => {
-      dispatch({ type: SHOW_MODAL});
-    }, 1000);
-  };
-
-  const validateHandler = (event) => {
-    event.preventDefault();
-    const ajv = new Ajv({allErrors: true});
+    const ajv = new Ajv({ allErrors: true });
     const validate = ajv.compile(schema);
 
-    if (validate(userData) && password === confirmPassword) {
-      completeHandler(event);
+    if (validate(userData)) {
+      dispatch({ type: SHOW_CHECKING});
+      dispatch({ type: PUT_USER_DATA, payload: userData});
+      setTimeout(() => {
+        dispatch({ type: SHOW_MODAL});
+      }, 1000);
+
+      const fieldsIds = ["firstName", "lastName"];
+      fieldsIds.forEach(item =>
+        document.getElementById(`${ item }`)
+          .setAttribute("data-valid", ""));
+
     } else {
-      console.log(validate.errors);
+      const fieldsIds = ["firstName", "lastName", "sex", "birthday", "ocean", "hobby"];
+      fieldsIds.forEach(item =>
+        document.getElementById(`${ item }`)
+          .setAttribute("data-valid", ""));
+
+      validate.errors !== null && validate.errors.forEach(item =>
+        document.getElementById(`${ item.instancePath.slice(1) }`)
+          .setAttribute("data-valid", "invalid"));
     }
   };
 
@@ -66,11 +72,9 @@ const Form = () => {
           phone={ phone }
           email={ email }
           password={ password }
-          confirmPassword={ confirmPassword }
           setPhone={ setPhone }
           setEmail={ setEmail }
           setPassword={ setPassword }
-          setConfirmPassword={ setConfirmPassword }
         />
         <PersonalInfo
           firstName={ firstName }
@@ -82,7 +86,7 @@ const Form = () => {
           setBirthday={ dateFormatChanger }
           setOcean={ setOcean }
           setHobby={ setHobby }
-          validateHandler={ validateHandler }
+          completeHandler={ completeHandler }
         />
       </div>
     </>

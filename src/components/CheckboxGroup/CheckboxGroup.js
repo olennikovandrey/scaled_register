@@ -23,7 +23,7 @@ const CheckboxGroup = ({ setHobby, isHidden }) => {
   };
 
   return (
-    <fieldset className="hobby" disabled={ isHidden } >
+    <fieldset className="hobby" disabled={ isHidden } id="hobby">
       <legend>Hobby <b>*</b></legend>
       <label htmlFor="Sport" disabled={ isHidden } >
         <input

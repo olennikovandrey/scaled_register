@@ -52,6 +52,9 @@ label
       & .hobby-select__label,
       & .hobby-select__content
         display: none
+    &[data-valid=invalid]
+      outline: 1px solid #ff0000
+      box-shadow: 0 0 8px #ff0000
 
   &__title
     display: flex
